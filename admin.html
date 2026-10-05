@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Larder · Shop admin</title>
+<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+<div id="login" class="login" hidden>
+  <form id="loginForm" class="login-box">
+    <h1>Shop admin</h1>
+    <p>Enter the admin key to see orders and customers.</p>
+    <label for="key">Admin key</label>
+    <input id="key" type="password" autocomplete="current-password" required>
+    <p class="err" id="loginErr" role="alert"></p>
+    <button class="btn pri" type="submit">Open dashboard</button>
+    <a class="back" href="index.html">← Back to the store</a>
+  </form>
+</div>
+
+<div id="app" hidden>
+  <header class="bar">
+    <a class="brand" href="index.html"><i></i>Larder <span>admin</span></a>
+    <nav class="tabs" role="tablist">
+      <button class="on" data-tab="orders" role="tab">Orders <b id="cOrders">0</b></button>
+      <button data-tab="users" role="tab">Customers <b id="cUsers">0</b></button>
+    </nav>
+    <div class="right"><span id="live" class="live">Live</span><button class="btn sec sm" id="csv">Export CSV</button><button class="btn sec sm" id="out">Sign out</button></div>
+  </header>
+
+  <main class="wrap">
+    <section id="tab-orders">
+      <div class="stats" id="stats"></div>
+      <div class="tools">
+        <input id="search" type="search" placeholder="Search name, phone, order ID, address, note…" aria-label="Search orders">
+        <select id="statusFilter" aria-label="Filter by status"><option value="">All statuses</option></select>
+      </div>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Order</th><th>Customer</th><th>Phone</th><th>Delivery address</th><th>Items</th><th>Note</th><th>Total</th><th>Status</th></tr></thead>
+          <tbody id="rows"></tbody>
+        </table>
+        <p class="empty" id="empty" hidden>No orders yet. Place one from the store and it will appear here.</p>
+      </div>
+    </section>
+
+    <section id="tab-users" hidden>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Name</th><th>Email</th><th>Phone</th><th>Joined</th><th>Orders</th></tr></thead>
+          <tbody id="urows"></tbody>
+        </table>
+        <p class="empty" id="uempty" hidden>No customer accounts yet.</p>
+      </div>
+    </section>
+  </main>
+</div>
+<div id="toast" class="toast" role="status"></div>
+<script src="js/admin.js"></script>
+</body>
+</html>

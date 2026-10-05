@@ -1,0 +1,12 @@
+{
+  "name": "larder-store",
+  "version": "1.0.0",
+  "description": "Modern demo e-commerce store with a tiny Node backend, admin page and order database.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "images": "node tools/generate-images.js"
+  },
+  "engines": { "node": ">=18" },
+  "license": "MIT"
+}
